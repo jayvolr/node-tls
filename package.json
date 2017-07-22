@@ -1,0 +1,24 @@
+{
+  "name": "node-tls",
+  "version": "1.0.0",
+  "description": "TLS Node/Express app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayvolr/node-tls.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jayvolr/node-tls/issues"
+  },
+  "homepage": "https://github.com/jayvolr/node-tls#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "hjs": "0.0.6"
+  }
+}
