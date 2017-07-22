@@ -13,6 +13,7 @@ if (process.env.NODE_ENV === "production") {
        return next();
      };
      console.log("whoa, redirecting");
+     console.log(req.headers['x-forwarded-proto']);
      res.redirect('https://' + req.headers.host + req.path);
    });
 }
