@@ -5,10 +5,17 @@ const fs = require('fs'),
 
 const app = express();
 
-console.log(app.get('env'));
+if (process.env.NODE_ENV === "production") {
+  app.all('*', (req, res, next)=>{
+    if(req.headers['x-forwarded-proto'] === 'https'){
+       // OK, continue
+       return next();
+     };
+     res.redirect('https://' + req.headers.host + req.path);
+   });
+}
 
 app
-  .all('*', ensureSecure)
   .set("view engine", "hjs")
   .use(express.static('public'))
 
@@ -23,13 +30,6 @@ app
   });
 
   if (process.env.NODE_ENV === "production") {
-
-    function ensureSecure(req, res, next){
-       if(req.secure){
-          return next();
-       };
-       res.redirect('https:/\/' + req.hostname + req.url);
-    }
 
     var options = {
       key: fs.readFileSync('/etc/letsencrypt/live/jayvolr.me/privkey.pem'),
