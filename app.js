@@ -3,6 +3,7 @@ var app = express();
 
 app
   .set("view engine", "hjs")
+  .use(express.static('public'))
 
   .get('/', (req, res)=>{
     res.render("index");
