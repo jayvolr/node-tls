@@ -9,8 +9,10 @@ if (process.env.NODE_ENV === "production") {
   app.all('*', (req, res, next)=>{
     if(req.headers['x-forwarded-proto'] === 'https'){
        // OK, continue
+       console.log("ur good, pal");
        return next();
      };
+     console.log("whoa, redirecting");
      res.redirect('https://' + req.headers.host + req.path);
    });
 }
