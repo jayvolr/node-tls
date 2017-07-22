@@ -16,6 +16,9 @@ app
   })
   .get('/about', (req, res)=>{
     res.render("about");
+  })
+  .listen(3000, ()=>{
+    console.log("Server listening on port 3000...");
   });
 
   if (process.env.NODE_ENV === "production") {
@@ -33,8 +36,4 @@ app
       console.log("TLS server listening on port 443...");
     })
 
-  }else {
-    app.listen(3000, ()=>{
-      console.log("Server listening on port 3000...");
-    });
   }
