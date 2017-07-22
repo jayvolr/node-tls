@@ -20,6 +20,10 @@ app
 
   if (process.env.NODE_ENV === "production") {
 
+    app.get('*', (req, res)=>{
+      res.redirect('https://jayvolr.me'+req.url);
+    })
+
     var options = {
       key: fs.readFileSync('~/etc/letsencrypt/live/jayvolr.me/privkey.pem'),
       cert: fs.readFileSync('~/etc/letsencrypt/live/jayvolr.me/cert.pem')
