@@ -8,6 +8,7 @@ const app = express();
 console.log(app.get('env'));
 
 app
+  .all('*', ensureSecure)
   .set("view engine", "hjs")
   .use(express.static('public'))
 
@@ -23,10 +24,12 @@ app
 
   if (process.env.NODE_ENV === "production") {
 
-    app.get('*', (req, res)=>{
-      console.log("hit");
-      res.redirect('https:\/\/jayvolr.me'+req.url);
-    })
+    function ensureSecure(req, res, next){
+       if(req.secure){
+          return next();
+       };
+       res.redirect('https:/\/' + req.hostname + req.url);
+    }
 
     var options = {
       key: fs.readFileSync('/etc/letsencrypt/live/jayvolr.me/privkey.pem'),
