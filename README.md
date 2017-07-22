@@ -1,2 +1,2 @@
 # node-tls
-TLS Node/Express app
+SSL/TLS Node/Express app
