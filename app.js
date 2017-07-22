@@ -25,8 +25,8 @@ app
     })
 
     var options = {
-      key: fs.readFileSync('~/etc/letsencrypt/live/jayvolr.me/privkey.pem'),
-      cert: fs.readFileSync('~/etc/letsencrypt/live/jayvolr.me/cert.pem')
+      key: fs.readFileSync('/etc/letsencrypt/live/jayvolr.me/privkey.pem'),
+      cert: fs.readFileSync('/etc/letsencrypt/live/jayvolr.me/cert.pem')
     };
 
     var server = https.createServer(options, app).listen(443, ()=>{
