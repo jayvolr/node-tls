@@ -7,14 +7,14 @@ const app = express();
 
 if (process.env.NODE_ENV === "production") {
   app.all('*', (req, res, next)=>{
-    if(req.headers['x-forwarded-proto'] === 'https'){
+    if(req.protocol === 'https'){
        // OK, continue
        console.log("ur good, pal");
        return next();
      };
      console.log("whoa, redirecting");
-     console.log(req.headers['x-forwarded-proto']);
-     res.redirect('https://' + req.headers.host + req.path);
+     console.log(req.protocol);
+     res.redirect('https://' + req.hostname + req.path);
    });
 }
 
