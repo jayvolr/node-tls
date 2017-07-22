@@ -24,7 +24,8 @@ app
   if (process.env.NODE_ENV === "production") {
 
     app.get('*', (req, res)=>{
-      res.redirect('https://jayvolr.me'+req.url);
+      console.log("hit");
+      res.redirect('https:\/\/jayvolr.me'+req.url);
     })
 
     var options = {
